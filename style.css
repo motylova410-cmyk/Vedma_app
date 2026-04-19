@@ -1,0 +1,96 @@
+/* Reset základních stylů */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Celá stránka */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Nadpis */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+header p {
+  opacity: 0.8;
+}
+
+/* Hlavní karta */
+.app {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 15px;
+  width: 320px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Textarea */
+textarea {
+  width: 100%;
+  height: 80px;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  resize: none;
+  font-size: 14px;
+}
+
+/* Tlačítko */
+button {
+  width: 100%;
+  padding: 10px;
+  background: #ff4ecd;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Hover efekt jen pro tlačítko */
+button:hover {
+  background: #ff2cb7;
+  box-shadow: 0 0 10px #ff4ecd, 0 0 20px #ff4ecd;
+}
+
+/* Box na odpověď */
+#answerBox {
+  margin-top: 15px;
+  padding: 15px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  min-height: 50px;
+}
+
+/* Text odpovědi */
+#answer {
+  font-style: italic;
+}
+
+/* Footer */
+footer {
+  margin-top: 15px;
+  font-size: 12px;
+  opacity: 0.6;
+  text-align: center;
+}
