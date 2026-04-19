@@ -36,6 +36,20 @@ const predictions = {
     "Blíží se rozhodnutí, které vše posune.",
     "Nový začátek je blíž, než si myslíš.",
     "Změna přichází v ten správný čas."
+  ],
+  kdy: [
+    "Vidím to brzy - dřív, než se naděješ, ale až ve chvíli, kdy přestaneš tlačit.",
+    "Na časové ose se to rýsuje během několika týdnů, možná měsíců.",
+    "Nepřijde to hned, ale ani ne pozdě - spíš ve správný okamžik, který poznáš.",
+    "Křišťálová koule šeptá: mezi dvěma důležitými událostmi, které teprve přijdou.",
+    "Stane se to tehdy, kdy to bude dávat největší smysl - a to poznáš podle klidu, který ucítíš."
+  ],
+  kolik: [
+    "Vidím číslo, které tě možná překvapí",
+    "Přesný počet se ukáže až časem.",
+    "Křišťálová koule naznačuje, že toho bude tolik, kolik uneseš a zvládneš.",
+    "Počet ještě není pevně daný - část osudu je napsaná a část závisí na tvých krocích.",
+    "Vidím číslo, které je větší, než by sis možná právě teď tipla."
   ]
 };
 
@@ -55,20 +69,41 @@ const placeholders = [
 const randomIndex = Math.floor(Math.random() * placeholders.length);
 textarea.placeholder = placeholders[randomIndex];
 
-
 // FUNKCE PRO URČENÍ KATEGORIE
 function getCategory(text) {
   text = text.toLowerCase();
 
-  if (text.includes("láska") || text.includes("vztah") || text.includes("partner")) {
-    return "laska";
-  } else if (text.includes("práce") || text.includes("kariéra") || text.includes("zaměstnání")) {
-    return "prace";
-  } else if (text.includes("peníze") || text.includes("finance")) {
-    return "penize";
-  } else {
-    return "obecne";
+  const timeKeywords = ["kdy", "kdy?", "za jak dlouho", "jak dlouho"];
+  const quantityKeywords = ["kolik", "kolik?", "kolik budu", "kolik budu mít", "kolik budu mit"];
+
+  const loveKeywords = ["lásk", "laska", "vztah", "partner", "milen", "manžel", "manzel"];
+  const workKeywords = ["prác", "prace", "kariér", "kariera", "zaměst", "zamest", "job"];
+  const moneyKeywords = ["peníz", "peniz", "financ", "plat", "výdě", "vyde"];
+
+  // typ otázky
+  if (timeKeywords.some(word => text.includes(word))) {
+    return "kdy";
   }
+
+  if (quantityKeywords.some(word => text.includes(word))) {
+    return "kolik";
+  }
+
+  // téma
+  if (loveKeywords.some(word => text.includes(word))) {
+    return "laska";
+  }
+
+  if (workKeywords.some(word => text.includes(word))) {
+    return "prace";
+  }
+
+  if (moneyKeywords.some(word => text.includes(word))) {
+    return "penize";
+  }
+
+  // fallback
+  return "obecne";
 }
 
 // FUNKCE PRO NÁHODNOU ODPOVĚĎ
@@ -82,18 +117,16 @@ function getRandomPrediction(category) {
 button.addEventListener("click", function () {
   const questionText = textarea.value.trim();
 
-  // validace
   if (questionText === "") {
     answer.textContent = "Nejprve napiš otázku.";
     return;
   }
 
-  // simulace "věštění"
   answer.textContent = "🔮 Vědma nahlíží do budoucnosti...";
 
   setTimeout(() => {
     const category = getCategory(questionText);
     const result = getRandomPrediction(category);
     answer.textContent = result;
-  }, 2000); // 2 sekunda delay pro efekt
+  }, 2000);
 });
