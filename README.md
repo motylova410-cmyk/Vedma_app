@@ -1,0 +1,1 @@
+Jednostránková webová aplikace vytvořená pomocí HTML, CSS a JavaScriptu. Uživatel zadá otázku a aplikace na základě klíčových slov určí typ dotazu (např. „kdy“, „kolik“, láska, práce, finance) a zobrazí odpovídající věštbu. Projekt demonstruje práci s DOM, podmínkami, polem dat a dynamickým obsahem.
