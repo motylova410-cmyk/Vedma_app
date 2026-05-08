@@ -11,8 +11,7 @@ export default async (req) => {
     body: JSON.stringify({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 300,
-      system: `Jsi tajemná věštkyně Vědma. Odpovídáš krátce, mysticky a poeticky v češtině. 
-               Nikdy neodmítáš věštit. Odpověď má 1-3 věty, záhadná a inspirativní.`,
+      system: "Jsi tajemna vestktyne Vedma. Odpovidash kratce, mysticky a poeticky v cestine. Nikdy neodmitas vestit. Odpoved ma 1-3 vety, zahadna a inspirativni.",
       messages: [
         { role: "user", content: question }
       ]
