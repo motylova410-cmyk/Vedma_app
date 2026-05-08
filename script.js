@@ -114,7 +114,7 @@ function getRandomPrediction(category) {
 }
 
 // HLAVNÍ LOGIKA PO KLIKNUTÍ
-button.addEventListener("click", function () {
+button.addEventListener("click", async function () {
   const questionText = textarea.value.trim();
 
   if (questionText === "") {
@@ -123,10 +123,20 @@ button.addEventListener("click", function () {
   }
 
   answer.textContent = "🔮 Vědma nahlíží do budoucnosti...";
+  button.disabled = true;
 
-  setTimeout(() => {
-    const category = getCategory(questionText);
-    const result = getRandomPrediction(category);
-    answer.textContent = result;
-  }, 2000);
+  try {
+    const response = await fetch("/api/vestba", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question: questionText })
+    });
+
+    const data = await response.json();
+    answer.textContent = data.prediction;
+  } catch (error) {
+    answer.textContent = "Křišťálová koule se zamlžila... Zkus to prosím znovu.";
+  } finally {
+    button.disabled = false;
+  }
 });
