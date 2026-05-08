@@ -18,8 +18,16 @@ export default async (req) => {
     })
   });
 
-  const data = await response.json();
-  const text = data.content[0].text;
+const data = await response.json();
+
+  // Zobraz co API vrátilo pro debug
+  if (!data.content || !data.content[0]) {
+    return new Response(JSON.stringify({ prediction: "Debug: " + JSON.stringify(data) }), {
+      headers: { "Content-Type": "application/json" }
+    });
+  }
+
+const text = data.content[0].text;
 
   return new Response(JSON.stringify({ prediction: text }), {
     headers: { "Content-Type": "application/json" }
