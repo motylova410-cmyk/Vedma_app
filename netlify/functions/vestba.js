@@ -1,0 +1,30 @@
+export default async (req) => {
+  const { question } = await req.json();
+
+  const response = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": process.env.ANTHROPIC_API_KEY,
+      "anthropic-version": "2023-06-01"
+    },
+    body: JSON.stringify({
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 300,
+      system: `Jsi tajemná věštkyně Vědma. Odpovídáš krátce, mysticky a poeticky v češtině. 
+               Nikdy neodmítáš věštit. Odpověď má 1-3 věty, záhadná a inspirativní.`,
+      messages: [
+        { role: "user", content: question }
+      ]
+    })
+  });
+
+  const data = await response.json();
+  const text = data.content[0].text;
+
+  return new Response(JSON.stringify({ prediction: text }), {
+    headers: { "Content-Type": "application/json" }
+  });
+};
+
+export const config = { path: "/api/vestba" };
