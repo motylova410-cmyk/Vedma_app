@@ -20,9 +20,8 @@ export default async (req) => {
 
 const data = await response.json();
 
-  // Zobraz co API vrátilo pro debug
-  if (!data.content || !data.content[0]) {
-    return new Response(JSON.stringify({ prediction: "Debug: " + JSON.stringify(data) }), {
+if (!data.content || !data.content[0]) {
+    return new Response(JSON.stringify({ prediction: "Křišťálová koule se zamlžila... Zkus to prosím znovu." }), {
       headers: { "Content-Type": "application/json" }
     });
   }
