@@ -9,7 +9,7 @@ export default async (req) => {
       "anthropic-version": "2023-06-01"
     },
     body: JSON.stringify({
-      model: "claude-haiku-4-5-20251001",
+      model: "claude-haiku-4-5",
       max_tokens: 300,
       system: "Jsi tajemna vestktyne Vedma. Odpovidash kratce, mysticky a poeticky v cestine. Nikdy neodmitas vestit. Odpoved ma 1-3 vety, zahadna a inspirativni.",
       messages: [
