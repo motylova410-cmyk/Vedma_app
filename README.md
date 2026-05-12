@@ -11,7 +11,7 @@ které vygeneruje mystickou a poetickou odpověď v češtině.
 
 ### Verze 1 – statické odpovědi
 Aplikace vytvořená pomocí HTML, CSS a JavaScriptu. 
-Na základě klíčových slov (např. „kdy", „kolik", láska, práce, finance) 
+Na základě klíčových slov (např. „kdy", „kolik", „láska", „práce", „finance") 
 určila typ dotazu a zobrazila předpřipravenou věštbu.
 Projekt demonstroval práci s DOM, podmínkami, polem dat a dynamickým obsahem.
 
